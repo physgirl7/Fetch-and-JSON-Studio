@@ -1,12 +1,15 @@
 window.addEventListener("load", function(event){
-        fetch("https://handlers.education.launchcode.org/static/astronauts.json").then(function(response){
+        fetch("https://handlers.education.launchcode.org/static/astronauts.json").then
+        (function(response){
             // console.log(response);
-            response.json().then(function(json){
+            response.json().then
+              (function(json){
                 console.log(json);
                 
               let astronautContainer = document.getElementById("container");
+              let newString ="";
               for(let i=0; i< json.length; i++){
-                let newString= `
+                let partString= `
                 <div class = "astronaut">
                  <div class = "bio">
                       <h3>${json[i].firstName} ${json[i].lastName}</h3>
@@ -19,9 +22,13 @@ window.addEventListener("load", function(event){
                      <img class ="avatar" src =${json[i].picture}>
                     </div>`
             
-                    astronautContainer.innerHTML += newString;
+                    // astronautContainer.innerHTML += newString;
+                    newString = newString + partString;
                  
               }
+
+              astronautContainer.innerHTML = newString;
+              
             })
           })
         }) 
